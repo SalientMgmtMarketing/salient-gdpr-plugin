@@ -1,0 +1,17 @@
+{
+  "name": "salient-gdpr",
+  "version": "1.0.0",
+  "description": "salient GDPR detection plugin",
+  "main": "salient-gdpr.php",
+  "scripts": {
+    "test": "echo \"Error: no test specified\" && exit 1"
+  },
+  "keywords": [
+    "gdpr"
+  ],
+  "author": "Paul Stonier",
+  "license": "ISC",
+  "devDependencies": {
+    "js-cookie": "^2.2.0"
+  }
+}
