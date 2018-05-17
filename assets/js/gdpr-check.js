@@ -22,14 +22,10 @@ function check_gdpr() {
       gdprCookie();
     });
   }
-  if ( gdprcookie === domestic ) {
-    loadZendeskChat();
-  }
-  if ( gdprcookie === 'non-eu' ) {
+  if ( gdprcookie === 'domestic' || gdprcookie === 'non-eu' || gdprcookie === 'eu-consented' ) {
     loadZendeskChat();
   }
   function gdprCookie() {
-    gdpr_from_ajax = 'EU';
     if ( gdpr_from_ajax === domestic ) {
       Cookies.set('gdpr', 'domestic');
     } else if ( gdpr_from_ajax != 'EU' ){
