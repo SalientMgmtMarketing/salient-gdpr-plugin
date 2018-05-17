@@ -12,6 +12,20 @@
   "author": "Paul Stonier",
   "license": "ISC",
   "devDependencies": {
+    "bourbon": "^5.0.0",
+    "bourbon-neat": "^1.9.0",
+    "graceful-fs": "^4.1.11",
+    "gulp": "^3.9.1",
+    "gulp-autoprefixer": "^5.0.0",
+    "gulp-concat": "^2.6.1",
+    "gulp-cssnano": "^2.1.3",
+    "gulp-sass": "^4.0.1",
+    "gulp-sourcemaps": "^2.6.4",
+    "gulp-uglify": "^3.0.0",
+    "minimatch": "^3.0.4",
+    "node-sass": "^4.8.3"
+  },
+  "dependencies": {
     "js-cookie": "^2.2.0"
   }
 }

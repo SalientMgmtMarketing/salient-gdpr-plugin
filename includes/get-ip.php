@@ -86,5 +86,4 @@ function ip_info( $ip = null, $purpose = 'location', $deep_detect = true ) {
 	}
 	return $output;
 }
-print_r( ip_info( 'Visitor', 'location' ) );
-//echo ip_info( 'Visitor', 'continent' );
+print_r( ip_info( 'Visitor', 'continent' ) );
