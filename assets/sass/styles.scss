@@ -1,0 +1,32 @@
+.gdpr-hide {
+	display: none;
+}
+.gdpr-show {
+	display: block;
+}
+.gdpr-cookie-banner {
+    max-width: 100%;
+    position: fixed;
+    z-index: 99999;
+    background: white;
+    padding: 1em;
+    right: 0;
+	bottom: 0;
+	font-size: .8em;
+
+	@media screen and (min-width: 570px) {
+		width: 550px;
+		right: 10px;
+		bottom: 115px;
+	}
+
+	.cookie-agree-btn {
+		float: right;
+		text-transform: uppercase;
+	}
+
+	a {
+		text-decoration: underline;
+		font-weight: 700;
+	}
+}

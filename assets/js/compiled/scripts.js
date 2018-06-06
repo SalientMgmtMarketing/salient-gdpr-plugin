@@ -1,1 +1,235 @@
-var gdpr_from_ajax;!function(e){var o=!1;if("function"==typeof define&&define.amd&&(define(e),o=!0),"object"==typeof exports&&(module.exports=e(),o=!0),!o){var r=window.Cookies,n=window.Cookies=e();n.noConflict=function(){return window.Cookies=r,n}}}(function(){function m(){for(var e=0,o={};e<arguments.length;e++){var r=arguments[e];for(var n in r)o[n]=r[n]}return o}return function e(f){function l(e,o,r){var n;if("undefined"!=typeof document){if(1<arguments.length){if("number"==typeof(r=m({path:"/"},l.defaults,r)).expires){var t=new Date;t.setMilliseconds(t.getMilliseconds()+864e5*r.expires),r.expires=t}r.expires=r.expires?r.expires.toUTCString():"";try{n=JSON.stringify(o),/^[\{\[]/.test(n)&&(o=n)}catch(e){}o=f.write?f.write(o,e):encodeURIComponent(String(o)).replace(/%(23|24|26|2B|3A|3C|3E|3D|2F|3F|40|5B|5D|5E|60|7B|7D|7C)/g,decodeURIComponent),e=(e=(e=encodeURIComponent(String(e))).replace(/%(23|24|26|2B|5E|60|7C)/g,decodeURIComponent)).replace(/[\(\)]/g,escape);var i="";for(var d in r)r[d]&&(i+="; "+d,!0!==r[d]&&(i+="="+r[d]));return document.cookie=e+"="+o+i}e||(n={});for(var c=document.cookie?document.cookie.split("; "):[],s=/(%[0-9A-Z]{2})+/g,p=0;p<c.length;p++){var a=c[p].split("="),u=a.slice(1).join("=");this.json||'"'!==u.charAt(0)||(u=u.slice(1,-1));try{var g=a[0].replace(s,decodeURIComponent);if(u=f.read?f.read(u,g):f(u,g)||u.replace(s,decodeURIComponent),this.json)try{u=JSON.parse(u)}catch(e){}if(e===g){n=u;break}e||(n[g]=u)}catch(e){}}return n}}return(l.set=l).get=function(e){return l.call(l,e)},l.getJSON=function(){return l.apply({json:!0},[].slice.call(arguments))},l.defaults={},l.remove=function(e,o){l(e,"",m(o,{expires:-1}))},l.withConverter=e,l}(function(){})});var domestic="NA";function checkCookie(){return Cookies.get("gdpr")}function loadZendeskChat(){var e,o,r,n,t;window.$zopim||(e=document,o="script",r=$zopim=function(e){r._.push(e)},n=r.s=e.createElement(o),t=e.getElementsByTagName(o)[0],r.set=function(e){r.set._.push(e)},r._=[],r.set._=[],n.async=!0,n.setAttribute("charset","utf-8"),n.src="https://v2.zopim.com/?qif1YM3xWvEX7OzRI0uwgImo1WMtvRRu",r.t=+new Date,n.type="text/javascript",t.parentNode.insertBefore(n,t))}var gdprcookie=String(checkCookie());function check_gdpr(){"undefined"===gdprcookie&&jQuery.get("https://www.salient.com/wp-content/plugins/salient-gdpr/includes/get-ip.php",function(e){(gdpr_from_ajax=String(e))===domestic?Cookies.set("gdpr","domestic"):"EU"!=gdpr_from_ajax?Cookies.set("gdpr","non-eu"):"EU"===gdpr_from_ajax&&(jQuery(".gdpr-cookie-banner").addClass("gdpr-show"),jQuery(".gdpr-cookie-banner").removeClass("gdpr-hide"),jQuery("form .gdpr-hide").addClass("gdpr-show"),jQuery("form .gdpr-hide").removeClass("gdpr-hide"))}),"domestic"!==gdprcookie&&"non-eu"!==gdprcookie&&"eu-consented"!==gdprcookie||loadZendeskChat(),"eu-consented"===gdprcookie&&(jQuery("form .gdpr-hide").addClass("gdpr-show"),jQuery("form .gdpr-hide").removeClass("gdpr-hide"))}function cookieConsent(){Cookies.set("gdpr","eu-consented"),jQuery(".gdpr-cookie-banner").removeClass("gdpr-show"),jQuery(".gdpr-cookie-banner").addClass("gdpr-hide")}check_gdpr(),document.querySelector("button.cookie-agree-btn").addEventListener("click",cookieConsent);
+/*!
+ * JavaScript Cookie v2.2.0
+ * https://github.com/js-cookie/js-cookie
+ *
+ * Copyright 2006, 2015 Klaus Hartl & Fagner Brack
+ * Released under the MIT license
+ */
+;(function (factory) {
+	var registeredInModuleLoader = false;
+	if (typeof define === 'function' && define.amd) {
+		define(factory);
+		registeredInModuleLoader = true;
+	}
+	if (typeof exports === 'object') {
+		module.exports = factory();
+		registeredInModuleLoader = true;
+	}
+	if (!registeredInModuleLoader) {
+		var OldCookies = window.Cookies;
+		var api = window.Cookies = factory();
+		api.noConflict = function () {
+			window.Cookies = OldCookies;
+			return api;
+		};
+	}
+}(function () {
+	function extend () {
+		var i = 0;
+		var result = {};
+		for (; i < arguments.length; i++) {
+			var attributes = arguments[ i ];
+			for (var key in attributes) {
+				result[key] = attributes[key];
+			}
+		}
+		return result;
+	}
+
+	function init (converter) {
+		function api (key, value, attributes) {
+			var result;
+			if (typeof document === 'undefined') {
+				return;
+			}
+
+			// Write
+
+			if (arguments.length > 1) {
+				attributes = extend({
+					path: '/'
+				}, api.defaults, attributes);
+
+				if (typeof attributes.expires === 'number') {
+					var expires = new Date();
+					expires.setMilliseconds(expires.getMilliseconds() + attributes.expires * 864e+5);
+					attributes.expires = expires;
+				}
+
+				// We're using "expires" because "max-age" is not supported by IE
+				attributes.expires = attributes.expires ? attributes.expires.toUTCString() : '';
+
+				try {
+					result = JSON.stringify(value);
+					if (/^[\{\[]/.test(result)) {
+						value = result;
+					}
+				} catch (e) {}
+
+				if (!converter.write) {
+					value = encodeURIComponent(String(value))
+						.replace(/%(23|24|26|2B|3A|3C|3E|3D|2F|3F|40|5B|5D|5E|60|7B|7D|7C)/g, decodeURIComponent);
+				} else {
+					value = converter.write(value, key);
+				}
+
+				key = encodeURIComponent(String(key));
+				key = key.replace(/%(23|24|26|2B|5E|60|7C)/g, decodeURIComponent);
+				key = key.replace(/[\(\)]/g, escape);
+
+				var stringifiedAttributes = '';
+
+				for (var attributeName in attributes) {
+					if (!attributes[attributeName]) {
+						continue;
+					}
+					stringifiedAttributes += '; ' + attributeName;
+					if (attributes[attributeName] === true) {
+						continue;
+					}
+					stringifiedAttributes += '=' + attributes[attributeName];
+				}
+				return (document.cookie = key + '=' + value + stringifiedAttributes);
+			}
+
+			// Read
+
+			if (!key) {
+				result = {};
+			}
+
+			// To prevent the for loop in the first place assign an empty array
+			// in case there are no cookies at all. Also prevents odd result when
+			// calling "get()"
+			var cookies = document.cookie ? document.cookie.split('; ') : [];
+			var rdecode = /(%[0-9A-Z]{2})+/g;
+			var i = 0;
+
+			for (; i < cookies.length; i++) {
+				var parts = cookies[i].split('=');
+				var cookie = parts.slice(1).join('=');
+
+				if (!this.json && cookie.charAt(0) === '"') {
+					cookie = cookie.slice(1, -1);
+				}
+
+				try {
+					var name = parts[0].replace(rdecode, decodeURIComponent);
+					cookie = converter.read ?
+						converter.read(cookie, name) : converter(cookie, name) ||
+						cookie.replace(rdecode, decodeURIComponent);
+
+					if (this.json) {
+						try {
+							cookie = JSON.parse(cookie);
+						} catch (e) {}
+					}
+
+					if (key === name) {
+						result = cookie;
+						break;
+					}
+
+					if (!key) {
+						result[name] = cookie;
+					}
+				} catch (e) {}
+			}
+
+			return result;
+		}
+
+		api.set = api;
+		api.get = function (key) {
+			return api.call(api, key);
+		};
+		api.getJSON = function () {
+			return api.apply({
+				json: true
+			}, [].slice.call(arguments));
+		};
+		api.defaults = {};
+
+		api.remove = function (key, attributes) {
+			api(key, '', extend(attributes, {
+				expires: -1
+			}));
+		};
+
+		api.withConverter = init;
+
+		return api;
+	}
+
+	return init(function () {});
+}));
+
+var gdpr_from_ajax;
+var domestic = 'NA';
+
+function checkCookie() {
+  return Cookies.get('gdpr');
+}
+
+function loadZendeskChat() {
+  window.$zopim||(function(d,s){var z=$zopim=function(c){z._.push(c)},$=z.s=
+  d.createElement(s),e=d.getElementsByTagName(s)[0];z.set=function(o){z.set.
+  _.push(o)};z._=[];z.set._=[];$.async=!0;$.setAttribute("charset","utf-8");
+  $.src="https://v2.zopim.com/?qif1YM3xWvEX7OzRI0uwgImo1WMtvRRu";z.t=+new Date;$.
+  type="text/javascript";e.parentNode.insertBefore($,e)})(document,"script");
+}
+
+var gdprcookie = String( checkCookie() );
+
+function check_gdpr() {
+  if ( gdprcookie === "undefined" ) {
+    jQuery.get('/wp-content/plugins/salient-gdpr/includes/get-ip.php', function(data) {
+      gdpr_from_ajax = String(data);
+      gdprCookie();
+    });
+  }
+  if ( gdprcookie === 'domestic' || gdprcookie === 'non-eu' || gdprcookie === 'eu-consented' ) {
+    loadZendeskChat();
+  }
+  function gdprCookie() {
+    gdpr_from_ajax = 'NA';
+    if ( gdpr_from_ajax === domestic ) {
+      Cookies.set('gdpr', 'domestic');
+      jQuery('.gdpr-cookie-banner').addClass('gdpr-show');
+      jQuery('.gdpr-cookie-banner').removeClass('gdpr-hide');
+      jQuery('form .gdpr-hide').addClass('gdpr-show');
+      jQuery('form .gdpr-hide').removeClass('gdpr-hide');
+    } else if ( gdpr_from_ajax != 'EU' ){
+      jQuery('.gdpr-cookie-banner').addClass('gdpr-show');
+      jQuery('.gdpr-cookie-banner').removeClass('gdpr-hide');
+      jQuery('form .gdpr-hide').addClass('gdpr-show');
+      jQuery('form .gdpr-hide').removeClass('gdpr-hide');
+      Cookies.set('gdpr', 'non-eu');
+    } else if ( gdpr_from_ajax === 'EU') {
+        jQuery('.gdpr-cookie-banner').addClass('gdpr-show');
+        jQuery('.gdpr-cookie-banner').removeClass('gdpr-hide');
+        jQuery('form .gdpr-hide').addClass('gdpr-show');
+        jQuery('form .gdpr-hide').removeClass('gdpr-hide');
+    }
+  }
+  if ( gdprcookie === 'eu-consented' ) {
+    jQuery('form .gdpr-hide').addClass('gdpr-show');
+    jQuery('form .gdpr-hide').removeClass('gdpr-hide');
+  }
+}
+check_gdpr();
+
+document.querySelector("button.cookie-agree-btn").addEventListener("click", cookieConsent);
+
+function cookieConsent() {
+  Cookies.set('gdpr', 'eu-consented');
+  jQuery('.gdpr-cookie-banner').removeClass('gdpr-show');
+  jQuery('.gdpr-cookie-banner').addClass('gdpr-hide');
+}
+if ( gdprcookie !== 'eu-consented' ) {
+  jQuery('.gdpr-cookie-banner').addClass('gdpr-show');
+  jQuery('.gdpr-cookie-banner').removeClass('gdpr-hide');
+  jQuery('form .gdpr-hide').addClass('gdpr-show');
+  jQuery('form .gdpr-hide').removeClass('gdpr-hide');
+}
+//# sourceMappingURL=scripts.js.map

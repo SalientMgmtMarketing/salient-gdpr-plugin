@@ -17,7 +17,7 @@ var gdprcookie = String( checkCookie() );
 
 function check_gdpr() {
   if ( gdprcookie === "undefined" ) {
-    jQuery.get('https://www.salient.com/wp-content/plugins/salient-gdpr/includes/get-ip.php', function(data) {
+    jQuery.get('/wp-content/plugins/salient-gdpr/includes/get-ip.php', function(data) {
       gdpr_from_ajax = String(data);
       gdprCookie();
     });
@@ -26,11 +26,20 @@ function check_gdpr() {
     loadZendeskChat();
   }
   function gdprCookie() {
+    gdpr_from_ajax = 'NA';
     if ( gdpr_from_ajax === domestic ) {
       Cookies.set('gdpr', 'domestic');
+      jQuery('.gdpr-cookie-banner').addClass('gdpr-show');
+      jQuery('.gdpr-cookie-banner').removeClass('gdpr-hide');
+      jQuery('form .gdpr-hide').addClass('gdpr-show');
+      jQuery('form .gdpr-hide').removeClass('gdpr-hide');
     } else if ( gdpr_from_ajax != 'EU' ){
+      jQuery('.gdpr-cookie-banner').addClass('gdpr-show');
+      jQuery('.gdpr-cookie-banner').removeClass('gdpr-hide');
+      jQuery('form .gdpr-hide').addClass('gdpr-show');
+      jQuery('form .gdpr-hide').removeClass('gdpr-hide');
       Cookies.set('gdpr', 'non-eu');
-    } else if ( gdpr_from_ajax === "EU") {
+    } else if ( gdpr_from_ajax === 'EU') {
         jQuery('.gdpr-cookie-banner').addClass('gdpr-show');
         jQuery('.gdpr-cookie-banner').removeClass('gdpr-hide');
         jQuery('form .gdpr-hide').addClass('gdpr-show');
@@ -50,4 +59,10 @@ function cookieConsent() {
   Cookies.set('gdpr', 'eu-consented');
   jQuery('.gdpr-cookie-banner').removeClass('gdpr-show');
   jQuery('.gdpr-cookie-banner').addClass('gdpr-hide');
+}
+if ( gdprcookie !== 'eu-consented' ) {
+  jQuery('.gdpr-cookie-banner').addClass('gdpr-show');
+  jQuery('.gdpr-cookie-banner').removeClass('gdpr-hide');
+  jQuery('form .gdpr-hide').addClass('gdpr-show');
+  jQuery('form .gdpr-hide').removeClass('gdpr-hide');
 }

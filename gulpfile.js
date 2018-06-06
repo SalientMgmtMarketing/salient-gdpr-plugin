@@ -31,9 +31,9 @@ gulp.task('compileSass', function () {
     .pipe(maps.init())
     .pipe(sass({includePaths: require('bourbon').includePaths}))
     .pipe(autoprefixer())
-    .pipe(cssnano())
-    .pipe(maps.write('./assets/sass/'))
-    .pipe(gulp.dest('./assets/sass/'));
+    //.pipe(cssnano())
+    .pipe(maps.write('./'))
+    .pipe(gulp.dest('./assets/css/'));
 });
 
 gulp.task('watchFiles', function(){
