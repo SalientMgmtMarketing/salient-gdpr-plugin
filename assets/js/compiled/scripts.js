@@ -171,6 +171,15 @@ function checkCookie() {
   return Cookies.get('gdpr');
 }
 
+function cookieConsent() {
+  console.log('clicked button');
+  Cookies.set('gdpr', 'eu-consented');
+  jQuery('.gdpr-cookie-banner').removeClass('gdpr-show');
+  jQuery('.gdpr-cookie-banner').addClass('gdpr-hide');
+}
+
+jQuery("button#gdpr-btn").click( cookieConsent );
+
 function loadZendeskChat() {
   window.$zopim||(function(d,s){var z=$zopim=function(c){z._.push(c)},$=z.s=
   d.createElement(s),e=d.getElementsByTagName(s)[0];z.set=function(o){z.set.
@@ -219,13 +228,10 @@ function check_gdpr() {
 }
 check_gdpr();
 
-document.querySelector("button.cookie-agree-btn").addEventListener("click", cookieConsent);
 
-function cookieConsent() {
-  Cookies.set('gdpr', 'eu-consented');
-  jQuery('.gdpr-cookie-banner').removeClass('gdpr-show');
-  jQuery('.gdpr-cookie-banner').addClass('gdpr-hide');
-}
+
+
+
 if ( gdprcookie !== 'eu-consented' ) {
   jQuery('.gdpr-cookie-banner').addClass('gdpr-show');
   jQuery('.gdpr-cookie-banner').removeClass('gdpr-hide');
