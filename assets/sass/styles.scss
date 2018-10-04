@@ -14,17 +14,23 @@
 	bottom: 0;
 	font-size: .8em;
 
-	@media screen and (min-width: 570px) {
+	@media screen and (min-width: 670px) {
+		width: 350px;
+		right: 288px;
+		bottom: 22px;
+		box-shadow: 1px 1px 13px #555;
+	}
+
+	@media screen and (min-width: 870px) {
 		width: 550px;
-		right: 10px;
-		bottom: 115px;
+		right: 288px;
+		bottom: 22px;
+		box-shadow: 1px 1px 13px #555;
 	}
 
 	.cookie-agree-btn {
+		float: right;
 		text-transform: uppercase;
-		@media screen and (min-width: 570px) {
-			float: right;
-		}
 	}
 
 	a {

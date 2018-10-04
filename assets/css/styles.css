@@ -13,16 +13,21 @@
   right: 0;
   bottom: 0;
   font-size: .8em; }
-  @media screen and (min-width: 570px) {
+  @media screen and (min-width: 670px) {
+    .gdpr-cookie-banner {
+      width: 350px;
+      right: 288px;
+      bottom: 22px;
+      box-shadow: 1px 1px 13px #555; } }
+  @media screen and (min-width: 870px) {
     .gdpr-cookie-banner {
       width: 550px;
-      right: 10px;
-      bottom: 115px; } }
+      right: 288px;
+      bottom: 22px;
+      box-shadow: 1px 1px 13px #555; } }
   .gdpr-cookie-banner .cookie-agree-btn {
+    float: right;
     text-transform: uppercase; }
-    @media screen and (min-width: 570px) {
-      .gdpr-cookie-banner .cookie-agree-btn {
-        float: right; } }
   .gdpr-cookie-banner a {
     text-decoration: underline;
     font-weight: 700; }
