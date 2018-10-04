@@ -19,8 +19,10 @@
       right: 10px;
       bottom: 115px; } }
   .gdpr-cookie-banner .cookie-agree-btn {
-    float: right;
     text-transform: uppercase; }
+    @media screen and (min-width: 570px) {
+      .gdpr-cookie-banner .cookie-agree-btn {
+        float: right; } }
   .gdpr-cookie-banner a {
     text-decoration: underline;
     font-weight: 700; }

@@ -21,8 +21,10 @@
 	}
 
 	.cookie-agree-btn {
-		float: right;
 		text-transform: uppercase;
+		@media screen and (min-width: 570px) {
+			float: right;
+		}
 	}
 
 	a {
