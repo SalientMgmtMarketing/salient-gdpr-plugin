@@ -10,7 +10,7 @@ window.addEventListener('load',function(){
     Cookies.set('gdpr', 'eu-consented');
     jQuery('.gdpr-cookie-banner').removeClass('gdpr-show');
     jQuery('.gdpr-cookie-banner').addClass('gdpr-hide');
-  }
+  };
 
   //document.querySelector('button.cookie-agree-btn').addEventListener("click", cookieConsent);
  jQuery('button.cookie-agree-btn').click(cookieConsent);
