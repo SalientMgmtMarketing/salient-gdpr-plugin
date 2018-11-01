@@ -11,7 +11,7 @@
  * Plugin Name: Salient GDPR
  * Plugin URI:  https://www.salient.com/
  * Description: Adds detection of whether someone is from the EU.
- * Version:     1.0.9
+ * Version:     1.0.10
  * Author:      Paul Stonier
  * Author URI:  https://www.salient.com
  * Text Domain: salient-gdpr
@@ -25,7 +25,7 @@
 function load_salient_gdpr_plugin_assets() {
 	wp_register_script( 'salient_gdpr_scripts', plugins_url( '/assets/js/compiled/scripts.js', __FILE__ ), 'jquery', '3.0.1', true );
 	wp_enqueue_script( 'salient_gdpr_scripts' );
-	wp_enqueue_style( 'salient-gdpr-styles', plugins_url( '/assets/css/styles.css', __FILE__ ), '', '1.0.9' );
+	wp_enqueue_style( 'salient-gdpr-styles', plugins_url( '/assets/css/styles.css', __FILE__ ), '', '1.0.10' );
 }
 add_action( 'wp_enqueue_scripts', 'load_salient_gdpr_plugin_assets' );
 

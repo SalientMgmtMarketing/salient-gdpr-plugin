@@ -10,17 +10,14 @@ window.addEventListener('load',function(){
     Cookies.set('gdpr', 'eu-consented');
     jQuery('.gdpr-cookie-banner').removeClass('gdpr-show');
     jQuery('.gdpr-cookie-banner').addClass('gdpr-hide');
+    loadDriftChat();
   };
 
   //document.querySelector('button.cookie-agree-btn').addEventListener("click", cookieConsent);
  jQuery('button.cookie-agree-btn').click(cookieConsent);
 
-  function loadZendeskChat() {
-    window.$zopim||(function(d,s){var z=$zopim=function(c){z._.push(c)},$=z.s=
-    d.createElement(s),e=d.getElementsByTagName(s)[0];z.set=function(o){z.set.
-    _.push(o)};z._=[];z.set._=[];$.async=!0;$.setAttribute("charset","utf-8");
-    $.src="https://v2.zopim.com/?qif1YM3xWvEX7OzRI0uwgImo1WMtvRRu";z.t=+new Date;$.
-    type="text/javascript";e.parentNode.insertBefore($,e)})(document,"script");
+  function loadDriftChat() {
+    "use strict"; !function() { var t = window.driftt = window.drift = window.driftt || []; if (!t.init) { if (t.invoked) return void (window.console && console.error && console.error("Drift snippet included twice.")); t.invoked = !0, t.methods = [ "identify", "config", "track", "reset", "debug", "show", "ping", "page", "hide", "off", "on" ], t.factory = function(e) { return function() { var n = Array.prototype.slice.call(arguments); return n.unshift(e), t.push(n), t; }; }, t.methods.forEach(function(e) { t[e] = t.factory(e); }), t.load = function(t) { var e = 3e5, n = Math.ceil(new Date() / e) * e, o = document.createElement("script"); o.type = "text/javascript", o.async = !0, o.crossorigin = "anonymous", o.src = "https://js.driftt.com/include/" + n + "/" + t + ".js"; var i = document.getElementsByTagName("script")[0]; i.parentNode.insertBefore(o, i); }; } }(); drift.SNIPPET_VERSION = '0.3.1'; drift.load('wikyi8ewbsvw');
   }
 
   var gdprcookie = String( checkCookie() );
@@ -32,8 +29,8 @@ window.addEventListener('load',function(){
         gdprCookie();
       });
     }
-    if ( gdprcookie === 'domestic' || gdprcookie === 'non-eu' || gdprcookie === 'eu-consented' ) {
-      loadZendeskChat();
+    if ( gdprcookie === 'eu-consented' ) {
+      loadDriftChat();
     }
     function gdprCookie() {
       gdpr_from_ajax = 'NA';
