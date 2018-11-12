@@ -34,6 +34,18 @@
 			float: right;
 		}
 	}
+	.cookie-message {
+		padding-right: 2em;
+	}
+	button.close-banner {
+		background: none;
+		width: 28px;
+		padding: 0;
+		border: none;
+		position: absolute;
+		top: .5em;
+		right: .5em;
+	}
 
 	a {
 		text-decoration: underline;

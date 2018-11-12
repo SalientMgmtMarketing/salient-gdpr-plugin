@@ -10,9 +10,10 @@ var autoprefixer = require('gulp-autoprefixer');
 
 gulp.task('concatScripts', function () {
   return gulp.src([
+    './assets/js/**/*.js',
     '!./assets/js/compiled/*.js',
-    './node_modules/js-cookie/src/js.cookie.js',
-    './assets/js/**/*.js'
+    '!./assets/js/compiled/*.map',
+    './node_modules/js-cookie/src/js.cookie.js'
   ])
     .pipe(maps.init())
     .pipe(concat('scripts.js'))
@@ -20,7 +21,7 @@ gulp.task('concatScripts', function () {
     .pipe(gulp.dest('./assets/js/compiled'));
 });
 
-gulp.task('minifyScripts', ['concatScripts'], function () {
+gulp.task('minifyScripts', gulp.parallel( 'concatScripts' ), function () {
   return gulp.src('./assets/js/compiled/scripts.js')
     .pipe(uglify())
     .pipe(gulp.dest('./assets/js/compiled/'));
@@ -42,12 +43,8 @@ gulp.task('watchFiles', function(){
 });
 
 
+gulp.task('build', gulp.parallel( 'concatScripts', 'minifyScripts', 'compileSass' ) );
 
+gulp.task('watch', gulp.parallel( 'watchFiles' ) );
 
-
-
-gulp.task('build', ['concatScripts', 'minifyScripts', 'compileSass']);
-
-gulp.task('watch', ['watchFiles']);
-
-gulp.task('default', ['concatScripts', 'compileSass']);
+gulp.task('default', gulp.parallel( 'concatScripts', 'compileSass') );

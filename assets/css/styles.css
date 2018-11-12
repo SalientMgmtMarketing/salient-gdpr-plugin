@@ -30,6 +30,16 @@
     @media screen and (min-width: 600px) {
       .gdpr-cookie-banner .cookie-agree-btn {
         float: right; } }
+  .gdpr-cookie-banner .cookie-message {
+    padding-right: 2em; }
+  .gdpr-cookie-banner button.close-banner {
+    background: none;
+    width: 28px;
+    padding: 0;
+    border: none;
+    position: absolute;
+    top: .5em;
+    right: .5em; }
   .gdpr-cookie-banner a {
     text-decoration: underline;
     font-weight: 700; }

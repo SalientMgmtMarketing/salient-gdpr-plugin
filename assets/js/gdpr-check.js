@@ -13,8 +13,15 @@ window.addEventListener('load',function(){
     loadDriftChat();
   };
 
+  var hideBannerOnly = function() {
+    Cookies.set('gdpr', 'hide-banner-only');
+    jQuery('.gdpr-cookie-banner').removeClass('gdpr-show');
+    jQuery('.gdpr-cookie-banner').addClass('gdpr-hide');
+  };
+
   //document.querySelector('button.cookie-agree-btn').addEventListener("click", cookieConsent);
  jQuery('button.cookie-agree-btn').click(cookieConsent);
+ jQuery('button.close-banner').click(hideBannerOnly);
 
   function loadDriftChat() {
     "use strict"; !function() { var t = window.driftt = window.drift = window.driftt || []; if (!t.init) { if (t.invoked) return void (window.console && console.error && console.error("Drift snippet included twice.")); t.invoked = !0, t.methods = [ "identify", "config", "track", "reset", "debug", "show", "ping", "page", "hide", "off", "on" ], t.factory = function(e) { return function() { var n = Array.prototype.slice.call(arguments); return n.unshift(e), t.push(n), t; }; }, t.methods.forEach(function(e) { t[e] = t.factory(e); }), t.load = function(t) { var e = 3e5, n = Math.ceil(new Date() / e) * e, o = document.createElement("script"); o.type = "text/javascript", o.async = !0, o.crossorigin = "anonymous", o.src = "https://js.driftt.com/include/" + n + "/" + t + ".js"; var i = document.getElementsByTagName("script")[0]; i.parentNode.insertBefore(o, i); }; } }(); drift.SNIPPET_VERSION = '0.3.1'; drift.load('wikyi8ewbsvw');
@@ -64,7 +71,7 @@ window.addEventListener('load',function(){
 
 
 
-  if ( gdprcookie !== 'eu-consented' ) {
+  if ( gdprcookie !== 'eu-consented' && gdprcookie !== 'hide-banner-only' ) {
     jQuery('.gdpr-cookie-banner').addClass('gdpr-show');
     jQuery('.gdpr-cookie-banner').removeClass('gdpr-hide');
     jQuery('form .gdpr-hide').addClass('gdpr-show');
