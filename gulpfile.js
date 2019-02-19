@@ -38,8 +38,8 @@ gulp.task('compileSass', function () {
 });
 
 gulp.task('watchFiles', function(){
-  gulp.watch(['./assets/sass/**/*.scss'],['compileSass']);
-  gulp.watch(['./assets/js/*.js'], ['concatScripts']);
+  gulp.watch(['./assets/sass/**/*.scss'], gulp.parallel( ['compileSass'] ) );
+  gulp.watch(['./assets/js/*.js'], gulp.parallel( ['concatScripts'] ) );
 });
 
 

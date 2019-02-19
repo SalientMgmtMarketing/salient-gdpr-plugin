@@ -4,38 +4,65 @@
 .gdpr-show {
 	display: block;
 }
+body.gdpr-banner-visible {
+	margin-top: 215px;
+	@media screen and (min-width: 300px) {
+		margin-top: 180px;
+	}
+	@media screen and (min-width: 410px) {
+		margin-top: 150px;
+	}
+	@media screen and (min-width: 500px) {
+		margin-top: 170px;
+	}
+	@media screen and (min-width: 600px) {
+		margin-top: 100px;
+	}
+}
+header#masthead.gdpr-banner-visible {
+	@media screen and (min-width: 1006px) {
+		top: 100px;
+	}
+}
 .gdpr-cookie-banner {
-    max-width: 100%;
-    position: fixed;
+	width: 100%;
+	height: 215px;
+    position: absolute;
     z-index: 99999;
     background: white;
-    padding: 1em;
+	padding: 1.5em;
+	top: 0;
+	left: 0;
     right: 0;
-	bottom: 0;
-	font-size: .8em;
-
-	@media screen and (min-width: 670px) {
-		width: 350px;
-		right: 288px;
-		bottom: 22px;
-		box-shadow: 1px 1px 13px #555;
+	bottom: auto;
+	font-size: .7em;
+	@media screen and (min-width: 300px) {
+		height: 180px;
+	}
+	@media screen and (min-width: 410px) {
+		height: 150px;
+	}
+	@media screen and (min-width: 500px) {
+		height: 170px;
+	}
+	@media screen and (min-width: 600px) {
+		height: 100px;
 	}
 
 	@media screen and (min-width: 870px) {
-		width: 550px;
-		right: 288px;
-		bottom: 22px;
-		box-shadow: 1px 1px 13px #555;
+		
 	}
 
 	.cookie-agree-btn {
 		text-transform: uppercase;
 		@media screen and (min-width: 600px) {
-			float: right;
+			position: absolute;
+			bottom: 1em;
+			right: .5em;
 		}
 	}
 	.cookie-message {
-		padding-right: 2em;
+		padding-right: 4em;
 	}
 	button.close-banner {
 		background: none;
@@ -45,6 +72,7 @@
 		position: absolute;
 		top: .5em;
 		right: .5em;
+		transform: scale(.7);
 	}
 
 	a {
