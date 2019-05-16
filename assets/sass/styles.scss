@@ -4,6 +4,9 @@
 .gdpr-show {
 	display: block;
 }
+form .gdpr-hide {
+	display: block;
+}
 body.gdpr-banner-visible {
 	margin-top: 215px;
 	@media screen and (min-width: 300px) {
