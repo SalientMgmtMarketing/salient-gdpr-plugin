@@ -69,6 +69,8 @@ body.gdpr-banner-visible {
     right: .5em;
     -webkit-transform: scale(0.7);
             transform: scale(0.7); }
+    .gdpr-cookie-banner button.close-banner img {
+      height: 28px; }
   .gdpr-cookie-banner a {
     text-decoration: underline;
     font-weight: 700; }
