@@ -32,9 +32,9 @@ window.addEventListener('load',function(){
         gdprCookie();
       });
     }
-    if ( gdprcookie === 'eu-consented' ) {
+    //if ( gdprcookie === 'eu-consented' ) {
       loadDriftChat();
-    }
+    //}
     function gdprCookie() {
       gdpr_from_ajax = 'NA';
       if ( gdpr_from_ajax === domestic ) {
