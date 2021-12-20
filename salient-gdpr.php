@@ -4,14 +4,14 @@
  *
  * @package     SalientGDPR
  * @author      Paul Stonier
- * @copyright   2018 Salient Management Company
+ * @copyright   2021 Salient Management Company
  * @license     GPL-2.0+
  *
  * @wordpress-plugin
  * Plugin Name: Salient GDPR
  * Plugin URI:  https://www.salient.com/
  * Description: Adds detection of whether someone is from the EU.
- * Version:     1.0.13
+ * Version:     1.0.14
  * Author:      Paul Stonier
  * Author URI:  https://www.salient.com
  * Text Domain: salient-gdpr
